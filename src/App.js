@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+
 import Header from './components/header/Header';
 import SingleTodo from './components/SingleTodo';
 function App() {
@@ -11,17 +12,15 @@ function App() {
     'Cleaning',
     'Shopping',
     'Laundary',
-  ]); //todo item
-
+  ]);
   //styling objects:
   const todoListStyle = {
-    backgroundColor: 'cornsilk',
-    fontWeight: 'bold',
+    // backgroundColor: 'lightgray',
     display: 'flex',
     border: '0.5px solid black',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: '50%',
+    textAlign: 'left',
+    margin: 'auto',
   };
   const renderTodoList = todos.map((todoItem, idx) => {
     return (
@@ -35,13 +34,6 @@ function App() {
     <div className="App">
       <Header />
       {renderTodoList}
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <p>3 Items left</p>
-        <p>All</p>
-        <p>Active</p>
-        <p>Completed</p>
-        <p>Clear Completed</p>
-      </div>
     </div>
   );
 }
