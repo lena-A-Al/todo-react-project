@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.checkbox {
+  display: 'flex';
+  color: 'blue';
+}
+
+.checkbox_completed {
+  background-color: gray;
+}
