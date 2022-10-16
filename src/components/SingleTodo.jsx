@@ -2,18 +2,10 @@ import React, { useState } from 'react';
 import '../App.css';
 import Filter from './filter/Filter';
 
-function SingleTodo({
-  todoName,
-  updateCompleteStatus,
-  setUpdateCompleteStatus,
-}) {
+function SingleTodo({ todoName }) {
   //states:
-  // const [updateCompleteStatus, setUpdateCompleteStatus] = useState(false);
+  const [updateCompleteStatus, setUpdateCompleteStatus] = useState(false);
 
-  //handler function
-  const changeStatusOfComplete = () => {
-    setUpdateCompleteStatus(!updateCompleteStatus);
-  };
   return (
     <>
       <label
@@ -24,7 +16,11 @@ function SingleTodo({
           justifyContent: 'center',
         }}
       >
-        <input name="test" type="checkbox" onClick={changeStatusOfComplete} />
+        <input
+          name="test"
+          type="checkbox"
+          onClick={() => setUpdateCompleteStatus(!updateCompleteStatus)}
+        />
         {todoName}
       </label>
     </>
