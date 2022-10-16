@@ -5,6 +5,7 @@ import Header from './components/header/Header';
 import SingleTodo from './components/SingleTodo';
 function App() {
   //state todos which is an array of todo items
+  //states:
   const [todos, setTodo] = useState([
     'reading',
     'Running',
@@ -13,6 +14,9 @@ function App() {
     'Shopping',
     'Laundary',
   ]);
+  const [updateCompleteStatus, setUpdateCompleteStatus] = useState(false);
+
+  console.log(updateCompleteStatus);
   //styling objects:
   const todoListStyle = {
     // backgroundColor: 'lightgray',
@@ -25,7 +29,11 @@ function App() {
   const renderTodoList = todos.map((todoItem, idx) => {
     return (
       <div style={todoListStyle} key={idx}>
-        <SingleTodo todoName={todoItem} />
+        <SingleTodo
+          todoName={todoItem}
+          updateCompleteStatus={updateCompleteStatus}
+          setUpdateCompleteStatus={setUpdateCompleteStatus}
+        />
       </div>
     );
   });
