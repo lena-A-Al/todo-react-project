@@ -1,14 +1,21 @@
 import React from 'react';
 
-function Filter() {
+function Filter({ filter, setFilter }) {
+  const filterStatus = (e) => {
+    setFilter('all');
+  };
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <p>3 Items left</p>
-        <p>All</p>
-        <p>Active</p>
-        <p>Completed</p>
-        <p>Clear Completed</p>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          marginTop: '10px',
+        }}
+      >
+        <button onClick={filterStatus}>All</button>
+        <button>Completed</button>
+        <button>Inactive</button>
       </div>
     </>
   );

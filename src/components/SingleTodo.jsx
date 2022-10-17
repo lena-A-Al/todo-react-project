@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import '../App.css';
-import Filter from './filter/Filter';
 
-function SingleTodo({ todoName }) {
+function SingleTodo({ todoList, parentFunc, key }) {
   //states:
   const [updateCompleteStatus, setUpdateCompleteStatus] = useState(false);
+  const childFunc = () => {
+    parentFunc(updateCompleteStatus);
+  };
+  childFunc();
 
   return (
     <>
@@ -14,6 +17,7 @@ function SingleTodo({ todoName }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          margin: '10p',
         }}
       >
         <input
@@ -21,7 +25,7 @@ function SingleTodo({ todoName }) {
           type="checkbox"
           onClick={() => setUpdateCompleteStatus(!updateCompleteStatus)}
         />
-        {todoName}
+        {todoList}
       </label>
     </>
   );
