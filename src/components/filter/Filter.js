@@ -19,8 +19,8 @@ function Filter({ filter, setFilter, completedList }) {
         <button name="completed" value="completed" onClick={filterHandler}>
           Completed
         </button>
-        <button name="inactive" value="inactive" onClick={filterHandler}>
-          Inactive
+        <button name="active" value="active" onClick={filterHandler}>
+          Active-not completed
         </button>
       </div>
     </>

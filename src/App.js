@@ -6,7 +6,6 @@ import Filter from './components/filter/Filter';
 import ListCount from './components/listCount/ListCount';
 function App() {
   //states
-
   /* this state holds todos list when the website renders for the first time
 the state will be passed as props to SingleTodo component. */
   const [todos, setTodo] = useState([
@@ -16,12 +15,13 @@ the state will be passed as props to SingleTodo component. */
     'Cleaning',
     'Shopping',
     'Laundary',
+    'cooking dinner',
   ]);
 
   //this state mentors when the item is clicked, if completed it will be added to this array.
   const [completedTodos, setCompletedTodos] = useState([]);
 
-  /* this state will be used to check if "all" , "completed"  , "inactive"
+  /* this state will be used to check if "all" , "completed"  , "inactive" filter
   if "all" will display everything.
   "completed" will display only checked items. 
   "inactive" will display unchecked item. */
@@ -35,7 +35,9 @@ the state will be passed as props to SingleTodo component. */
     textAlign: 'left',
     margin: 'auto',
   };
-
+  /* this function is in the parent component
+    it takes data coming from the child component as a parameter
+    this pass this parameter to a local state in the parent component */
   const parent = (dataFromChildSingleTodo) => {
     // console.log(dataFromChildSingleTodo);
     setCompletedTodos((completedTodos) => {
@@ -43,6 +45,7 @@ the state will be passed as props to SingleTodo component. */
     });
   };
 
+  //rendering functions:
   // this will render todo list when the component first renders and filter === "all".
   const renderTodoList = todos.map((todoItem, idx) => {
     return (
@@ -61,7 +64,7 @@ the state will be passed as props to SingleTodo component. */
     );
   });
 
-  // this will render only completed tasks.
+  // this will render only inactive tasks.
   const InactiveList = todos.filter((item) => !completedTodos.includes(item));
   console.log(InactiveList);
   const renderTodoInactiveList = InactiveList.map((todoItem, idx) => {
@@ -80,8 +83,9 @@ the state will be passed as props to SingleTodo component. */
         ? renderTodoList
         : filter === 'completed'
         ? renderTodoCompleteList
-        : renderTodoInactiveList}
-
+        : filter === 'active'
+        ? renderTodoInactiveList
+        : ''}
       <Filter filter={filter} setFilter={setFilter} />
     </div>
   );

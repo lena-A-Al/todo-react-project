@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import '../App.css';
 
-function SingleTodo({ todoList, parentFunc, key }) {
+function SingleTodo({ todoList, parentFunc, key, filter }) {
+  console.log(filter);
   //states:
   const [updateCompleteStatus, setUpdateCompleteStatus] = useState(false);
   const handleSelectClick = () => {
