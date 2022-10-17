@@ -4,10 +4,14 @@ import '../App.css';
 function SingleTodo({ todoList, parentFunc, key }) {
   //states:
   const [updateCompleteStatus, setUpdateCompleteStatus] = useState(false);
-  const childFunc = () => {
-    parentFunc(updateCompleteStatus);
+  const handleSelectClick = () => {
+    setUpdateCompleteStatus(!updateCompleteStatus);
+    parentFunc(todoList);
   };
-  childFunc();
+  // const childFunc = () => {
+  //   parentFunc(updateCompleteStatus);
+  // };
+  // childFunc();
 
   return (
     <>
@@ -20,12 +24,9 @@ function SingleTodo({ todoList, parentFunc, key }) {
           margin: '10p',
         }}
       >
-        <input
-          name="test"
-          type="checkbox"
-          onClick={() => setUpdateCompleteStatus(!updateCompleteStatus)}
-        />
+        <input name="test" type="checkbox" onClick={handleSelectClick} />
         {todoList}
+        {key}
       </label>
     </>
   );

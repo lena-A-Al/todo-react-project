@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Filter({ filter, setFilter }) {
-  const filterStatus = (e) => {
-    setFilter('all');
+function Filter({ filter, setFilter, completedList }) {
+  const completedHandler = () => {
+    console.log('hello');
   };
   return (
     <>
@@ -13,8 +13,8 @@ function Filter({ filter, setFilter }) {
           marginTop: '10px',
         }}
       >
-        <button onClick={filterStatus}>All</button>
-        <button>Completed</button>
+        <button>All</button>
+        <button onClick={completedHandler}>Completed</button>
         <button>Inactive</button>
       </div>
     </>

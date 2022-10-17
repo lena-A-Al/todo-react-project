@@ -7,6 +7,7 @@ import ListCount from './components/listCount/ListCount';
 function App() {
   //state todos which is an array of todo items
   //states:
+  //this state has the hard coded list in the page for the first time. 
   const [todos, setTodo] = useState([
     'reading',
     'Running',
@@ -15,6 +16,9 @@ function App() {
     'Shopping',
     'Laundary',
   ]);
+  //this state mentors when the item is clicked, if completed it will be added to this array.
+  const [completedTodos, setCompletedTodos] = useState([]);
+  const [filter, setFilter] = useState('all');
   //styling objects:
   const todoListStyle = {
     display: 'flex',
@@ -26,7 +30,11 @@ function App() {
 
   const parent = (dataFromChildSingleTodo) => {
     console.log(dataFromChildSingleTodo);
+    setCompletedTodos((completedTodos) => {
+      return [...completedTodos, dataFromChildSingleTodo];
+    });
   };
+  console.log(completedTodos);
 
   const renderTodoList = todos.map((todoItem, idx) => {
     return (
@@ -41,7 +49,11 @@ function App() {
       <Header />
       <ListCount todoList={todos} />
       {renderTodoList}
-      <Filter />
+      <Filter
+        filter={filter}
+        setFilter={parent}
+        completedList={completedTodos}
+      />
     </div>
   );
 }
