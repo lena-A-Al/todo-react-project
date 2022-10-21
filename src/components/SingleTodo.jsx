@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import '../App.css';
 
 function SingleTodo({ todoList, parentFunc, key, filter }) {
-  console.log(filter);
   //states:
   const [updateCompleteStatus, setUpdateCompleteStatus] = useState(false);
   const handleSelectClick = () => {
     setUpdateCompleteStatus(!updateCompleteStatus);
     parentFunc(todoList);
   };
-  // const childFunc = () => {
-  //   parentFunc(updateCompleteStatus);
-  // };
-  // childFunc();
+  const [checkedItem, setCheckedItem] = useState(false);
 
+  // If it's checked, set this to true
+  // If it isn't checked, set this to false
+  const isThisTodoChecked = true;
+
+  // if (updateCompleteStatus) {
+  //   setCheckedItem(true);
+  // }
   return (
     <>
       <label
@@ -25,7 +28,12 @@ function SingleTodo({ todoList, parentFunc, key, filter }) {
           margin: '10p',
         }}
       >
-        <input name="test" type="checkbox" onClick={handleSelectClick} />
+        <input
+          name="test"
+          // checked
+          type="checkbox"
+          onClick={handleSelectClick}
+        />
         {todoList}
         {key}
       </label>
